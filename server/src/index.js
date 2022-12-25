@@ -1,16 +1,24 @@
 import express from "express";
-import * as dotenv from 'dotenv'
+import * as dotenv from 'dotenv';
 dotenv.config()
-import morgan from "morgan"
+import morgan from "morgan";
+import cors from 'cors';
 
 import routesAuth from "./routes/auth.routes.js"
+import dbConection from "./database/config.js";
 
 // Create Server
 const app = express();
 
+// Database
+dbConection();
+
 // Public directory - Middleware use
 app.use(express.static("public"));
 app.use(morgan("dev"))
+
+// Cors
+app.use(cors());
 
 // Read and parse body
 app.use(express.json())
