@@ -17,6 +17,7 @@ import Purchase from '../components/Purchase/Purchase'
 import PrivateRoute from '../utils/PrivateRoute'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from "../firebase/firebase-config"
+import { getProducts } from '../redux/Products/products-actions'
 
 
 const RouterApp = () => {
@@ -27,13 +28,26 @@ const RouterApp = () => {
     const authState = useSelector(state => state.auth);
     const { checking, uid } = authState
 
+    const productsAPIState = useSelector(state => state.products);
+    const { loading } = productsAPIState;
+
+
     // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
     // Keep auth state, renew token to keep login alive
     useEffect(() => {
-        dispatch(startChecking())
+        dispatch(startChecking());
+        dispatch(getProducts());
     }, [dispatch])
+
+    // API
+    // useEffect(() => {
+    //     const loadProducts = () => {
+    //         dispatch(getProducts())
+    //     }
+    //     loadProducts()
+    // }, [dispatch])
 
 
     // Keep state of user authenticated on reload. user? check if user has something, then look for user.uid
@@ -52,7 +66,7 @@ const RouterApp = () => {
     }, [dispatch])
 
     // See what we can add - Spinner???
-    if (checking) {
+    if (checking || loading) {
         return (
             <Spinner />
         )
