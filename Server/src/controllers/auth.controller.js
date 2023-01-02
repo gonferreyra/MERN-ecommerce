@@ -6,7 +6,7 @@ import User from "../models/User.js";
 
 export const createUser = async (req = request, res = response) => {
 
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     try {
         let user = await User.findOne({ email });
@@ -21,7 +21,8 @@ export const createUser = async (req = request, res = response) => {
         user = new User({
             name,
             email,
-            password
+            password,
+            role
         });
 
         // Encrypy password (function in User Model)
@@ -38,6 +39,7 @@ export const createUser = async (req = request, res = response) => {
             ok: true,
             uid: user.id,
             name: user.name,
+            role: user.role,
             token
         });
 
@@ -82,6 +84,7 @@ export const loginUser = async (req = request, res = response) => {
             ok: true,
             uid: user.id,
             name: user.name,
+            role: user.role,
             token
         })
 

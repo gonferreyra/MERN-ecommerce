@@ -4,7 +4,9 @@ dotenv.config()
 import morgan from "morgan";
 import cors from 'cors';
 
-import routesAuth from "./routes/auth.routes.js"
+import routesAuth from "./routes/auth.routes.js";
+import routesProducts from "./routes/product.routes.js"
+import routesSearch from "./routes/search.routes.js"
 import dbConection from "./database/config.js";
 
 // Create Server
@@ -26,7 +28,8 @@ app.use(express.json())
 // Routes
 // TODO: auth // crear, login, renew
 app.use('/api/auth', routesAuth);
-
+app.use('/api/products', routesProducts);
+app.use('/api/search', routesSearch);
 
 // Petitions
 app.listen(process.env.PORT, () => {
