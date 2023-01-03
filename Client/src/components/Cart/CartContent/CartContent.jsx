@@ -24,7 +24,7 @@ const CartContent = ({ data }) => {
     <CartContentContainer>
       <CartBox>
         <CartImg
-          src={require("../../../img/" + data.item.url + ".png")}
+          src={require("../../../img/" + data.item.imgUrl + ".png")}
           alt="cart"
         />
         <ProductDetailBox>
@@ -39,7 +39,7 @@ const CartContent = ({ data }) => {
               min="1"
               value={data.quantity}
               onChange={(e) =>
-                dispatch(adjustQuantity(data.item.id, e.target.value))
+                dispatch(adjustQuantity(data.item._id, e.target.value))
               }
             />
           </CartQuantityContainer>
@@ -50,7 +50,7 @@ const CartContent = ({ data }) => {
             color: "red",
             cursor: "pointer",
           }}
-          onClick={() => dispatch(removeFromCart(data.item.id))}
+          onClick={() => dispatch(removeFromCart(data.item._id))}
         />
       </CartBox>
     </CartContentContainer>

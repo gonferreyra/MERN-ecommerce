@@ -78,6 +78,7 @@ export const SearchErrorP = styled.p``
 export const SneakerContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  min-height: 610px;
 
   @media screen and (max-width: 650px) {
     justify-content: center;

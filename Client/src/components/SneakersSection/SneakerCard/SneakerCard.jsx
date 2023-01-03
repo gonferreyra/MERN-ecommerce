@@ -28,7 +28,10 @@ const SneakerCard = ({ sneaker }) => {
   return (
     <Card>
       <CardImg>
-        <SneakerImg src={require("../../../img/" + sneaker.url + ".png")} />
+        <SneakerImg
+          src={require("../../../img/" + sneaker.imgUrl + ".png")}
+          alt="sneaker-img"
+        />
       </CardImg>
       <CardInfoContainer>
         <CardName>{sneaker.name}</CardName>
@@ -36,14 +39,15 @@ const SneakerCard = ({ sneaker }) => {
         <CardHoverContainer>
           <CardBtn>
             <Btn
-              id={sneaker.id}
-              onClick={() => dispatch(addToCart(sneaker.id))}
+              id={sneaker._id}
+              sneaker={sneaker}
+              onClick={() => dispatch(addToCart(sneaker))}
             >
               <BsFillCartCheckFill /> Add to Cart
             </Btn>
           </CardBtn>
           <CardIcons
-            to={`/product/${sneaker.id}`}
+            to={`/product/${sneaker._id}`}
             onClick={() => dispatch(loadCurrentItem(sneaker))}
           >
             <IconBtn>

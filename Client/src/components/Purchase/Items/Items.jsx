@@ -21,7 +21,7 @@ const Items = ({ item }) => {
     <ItemsContainer>
       <Item>
         <ImgContainer>
-          <Image src={require("../../../img/" + item.item.url + ".png")} />
+          <Image src={require("../../../img/" + item.item.imgUrl + ".png")} />
         </ImgContainer>
         <TextContainer>
           <Name>{item.item.name}</Name>
@@ -31,7 +31,7 @@ const Items = ({ item }) => {
             type="number"
             value={item.quantity}
             onChange={(e) =>
-              dispatch(adjustQuantity(item.item.id, e.target.value))
+              dispatch(adjustQuantity(item.item._id, e.target.value))
             }
           />
         </QtyContainer>

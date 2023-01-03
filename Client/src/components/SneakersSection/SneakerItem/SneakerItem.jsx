@@ -33,13 +33,13 @@ const SneakerItem = () => {
     <ItemContainer cartIsOpen={cartIsOpen}>
       <GridContainer>
         <ImgContainer>
-          <ItemImg src={require("../../../img/" + item.url + ".png")} />
+          <ItemImg src={require("../../../img/" + item.imgUrl + ".png")} />
         </ImgContainer>
         <Content>
           <ContentName>{item.name}</ContentName>
           <ContentPrice>{item.price}</ContentPrice>
           <ContentInfo>{item.info}</ContentInfo>
-          <ContentBtn onClick={() => dispatch(addToCart(item.id))}>
+          <ContentBtn onClick={() => dispatch(addToCart(item))}>
             Add To Cart
           </ContentBtn>
         </Content>

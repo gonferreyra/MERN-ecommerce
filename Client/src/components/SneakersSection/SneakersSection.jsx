@@ -20,7 +20,11 @@ import { uiRemoveError, uiSetError } from "../../redux/UiReducer/ui-actions";
 
 const SneakersSection = () => {
   // connect state from store to component
-  const products = useSelector((state) => state.shop.products);
+  // const products = useSelector((state) => state.shop.products);
+  // console.log(products);
+
+  // connect state from new reducer from API products
+  const products = useSelector((state) => state.products.products);
   // console.log(products);
 
   // Items to show, determines how many items are shown on the sneakers section
@@ -42,6 +46,7 @@ const SneakersSection = () => {
   };
   // Usememo to store the value and avoid to change sneakers everytime the component re-render when cart is open
   const memoProducts = useMemo(() => shuffleArray(products), [products]);
+  // console.log(memoProducts);
 
   // bring state from context
   const { cartIsOpen } = useContext(UserContext);
@@ -135,7 +140,7 @@ const SneakersSection = () => {
                 .slice(0, items)
                 .map((sneaker) => (
                   <SneakerCard
-                    key={sneaker.id}
+                    key={sneaker._id}
                     sneaker={sneaker}
                     cartIsOpen={cartIsOpen}
                   />
