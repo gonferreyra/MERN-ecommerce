@@ -47,7 +47,7 @@ export const startRegister = (name, email, password) => {
                 name: data.name
             }))
             Swal.fire({
-                title: 'Login successfull',
+                title: 'Register successfull. You are now logged in',
                 icon: 'success',
                 timer: 2000
             })
@@ -123,7 +123,6 @@ export const startGoogleLogin = () => {
                 // console.log(user.accessToken)
                 await dispatch(
                     loginGoogle(user.uid, user.displayName, user.photoURL)
-
                 )
                 Swal.fire({
                     title: 'Login successfull',
@@ -149,7 +148,7 @@ export const startGoogleLogout = () => {
     return async (dispatch) => {
         await signOut(auth)
             .then(() => {
-                dispatch(logout())
+                dispatch(logoutGoogle())
             })
             .catch(error => console.log(error))
     }

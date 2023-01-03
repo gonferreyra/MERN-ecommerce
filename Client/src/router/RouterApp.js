@@ -59,7 +59,7 @@ const RouterApp = () => {
                 dispatch(loginGoogle(user.uid, user.displayName, user.photoURL))
                 setGoogleLogin(true)
             } else {
-                // setGoogleLogin(false)
+                setGoogleLogin(false)
             }
             // setChecking(false)
         })
