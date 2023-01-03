@@ -1,10 +1,12 @@
-import { types } from "./shopping-types"
+import { types } from "./shopping-types";
 
-export const addToCart = (itemID) => {
+
+export const addToCart = (sneaker) => {
     return {
         type: types.ADD_TO_CART,
         payload: {
-            id: itemID
+            sneaker: sneaker,
+            id: sneaker._id
         }
     }
 };
