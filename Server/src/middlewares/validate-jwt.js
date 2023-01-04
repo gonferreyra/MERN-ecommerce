@@ -19,6 +19,7 @@ const validateJWT = (req = request, res = response, next) => {
 
         req.uid = payload.uid;
         req.name = payload.name;
+        req.role = payload.role
 
 
     } catch (error) {
