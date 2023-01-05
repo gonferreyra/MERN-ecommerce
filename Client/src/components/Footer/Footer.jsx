@@ -71,8 +71,7 @@ const Footer = () => {
                 href="https://github.com/gonferreyra/"
                 target="_blank"
               >
-                Gonzalo Ferreyra © {new Date().getFullYear()} All rights
-                reserved.
+                Gonzalo Ferreyra © 2022 All rights reserved.
               </WebsiteLink>
             </WebsiteRights>
             <SocialIcons>

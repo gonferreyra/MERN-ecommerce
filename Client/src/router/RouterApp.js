@@ -41,14 +41,6 @@ const RouterApp = () => {
         dispatch(getProducts());
     }, [dispatch])
 
-    // API
-    // useEffect(() => {
-    //     const loadProducts = () => {
-    //         dispatch(getProducts())
-    //     }
-    //     loadProducts()
-    // }, [dispatch])
-
 
     // Keep state of user authenticated on reload. user? check if user has something, then look for user.uid
     const [googleLogin, setGoogleLogin] = useState(false);
