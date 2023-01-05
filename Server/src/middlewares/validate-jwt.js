@@ -19,9 +19,9 @@ const validateJWT = async (req = request, res = response, next) => {
     // Almacenamos el usuario para usar mas adelante
     const user = await User.findById(payload.uid);
 
+    // En req.user guardamos el usuario y lo podemos llamar de otra funcion
     req.user = user;
-    // req.name = payload.name;
-    // req.role = payload.role;
+
     next();
   } catch (error) {
     return res.status(401).json({
