@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { IoIosClose } from "react-icons/io";
 // import { BsTrash } from "react-icons/bs";
+import { GrUserAdmin } from "react-icons/gr";
 
 import {
   CartContainer,
+  AdminMenu,
+  AdminMenuBtn,
   CartTitle,
   CartTotal,
   TotalPrice,
@@ -64,6 +67,14 @@ const Cart = ({ googleLogin }) => {
               <UserInfoImg src={UserImg} alt="profile" />
             )}
           </UserInfo>
+        )}
+        {auth?.role === "ADMIN_ROLE" && (
+          <AdminMenu>
+            <AdminMenuBtn to="/admin" onClick={toggleCart}>
+              <GrUserAdmin />
+              Admin Menu
+            </AdminMenuBtn>
+          </AdminMenu>
         )}
 
         <IoIosClose
