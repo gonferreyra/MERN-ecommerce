@@ -3,37 +3,45 @@
     host = /api/products/
 */
 
-import { Router } from 'express';
-import { createProducts, deleteProductById, getProducts, updateProductById } from '../controllers/products.controller.js';
-import { check } from 'express-validator';
-import validateJWT from '../middlewares/validate-jwt.js';
-import fieldsValidator from '../middlewares/fields-validator.js';
-import { existsProductById } from '../helpers/db-validators.js';
+import { Router } from "express";
+import {
+  createProducts,
+  deleteProductById,
+  getProducts,
+  updateProductById,
+} from "../controllers/products.controller.js";
+import { check } from "express-validator";
+import validateJWT from "../middlewares/validate-jwt.js";
+import fieldsValidator from "../middlewares/fields-validator.js";
+import { existsProductById } from "../helpers/db-validators.js";
 const router = Router();
 
-
-
 // Endpoints
-router.get('/', getProducts);
+router.get("/", getProducts);
 
-router.post('/', [
+router.post(
+  "/",
+  [
     validateJWT,
-    check('name', 'Product name is required').notEmpty(),
-    check('category', 'Product category is required').notEmpty(),
-    check('price', 'Product price is required').notEmpty(),
-    check('info', 'Product info is required').notEmpty(),
+    check("name", "Product name is required").notEmpty(),
+    check("category", "Product category is required").notEmpty(),
+    check("price", "Product price is required").notEmpty(),
+    check("info", "Product info is required").notEmpty(),
     fieldsValidator,
-], createProducts);
+  ],
+  createProducts
+);
 
-router.put("/:id", [
-    validateJWT,
-    check('id').custom(existsProductById),
-    fieldsValidator
-], updateProductById);
+router.put(
+  "/:id",
+  [validateJWT, check("id").custom(existsProductById), fieldsValidator],
+  updateProductById
+);
 
-router.delete('/:id', [
-    validateJWT,
-    check('id').custom(existsProductById),
-], deleteProductById);
+router.delete(
+  "/:id",
+  [validateJWT, check("id").custom(existsProductById)],
+  deleteProductById
+);
 
 export default router;
