@@ -21,10 +21,7 @@ const AdminItems = ({ product }) => {
   return (
     <Card>
       <CardImg>
-        <SneakerImg
-          src={require("../../../img/" + product.imgUrl + ".png")}
-          alt="sneaker-img"
-        />
+        <SneakerImg src={product.imgUrl} alt="sneaker-img" />
       </CardImg>
       <CardInfoContainer>
         <CardName>{product.name}</CardName>

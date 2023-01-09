@@ -28,10 +28,7 @@ const SneakerCard = ({ sneaker }) => {
   return (
     <Card>
       <CardImg>
-        <SneakerImg
-          src={require("../../../img/" + sneaker.imgUrl + ".png")}
-          alt="sneaker-img"
-        />
+        <SneakerImg src={sneaker.imgUrl} alt="sneaker-img" />
       </CardImg>
       <CardInfoContainer>
         <CardName>{sneaker.name}</CardName>

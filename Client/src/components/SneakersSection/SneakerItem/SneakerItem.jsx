@@ -33,7 +33,7 @@ const SneakerItem = () => {
     <ItemContainer cartIsOpen={cartIsOpen}>
       <GridContainer>
         <ImgContainer>
-          <ItemImg src={require("../../../img/" + item.imgUrl + ".png")} />
+          <ItemImg src={item.imgUrl} />
         </ImgContainer>
         <Content>
           <ContentName>{item.name}</ContentName>
@@ -44,7 +44,7 @@ const SneakerItem = () => {
           </ContentBtn>
         </Content>
         <BackBtnContainer>
-          <BackBtn to="/">Go Back</BackBtn>
+          <BackBtn to="/#sneakerSection">Go Back</BackBtn>
         </BackBtnContainer>
       </GridContainer>
     </ItemContainer>

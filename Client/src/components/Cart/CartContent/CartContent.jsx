@@ -23,10 +23,7 @@ const CartContent = ({ data }) => {
   return (
     <CartContentContainer>
       <CartBox>
-        <CartImg
-          src={require("../../../img/" + data.item.imgUrl + ".png")}
-          alt="cart"
-        />
+        <CartImg src={data.item.imgUrl} alt="cart" />
         <ProductDetailBox>
           <CartProductTitle>{data.item.name}</CartProductTitle>
           <CartProductPrice>

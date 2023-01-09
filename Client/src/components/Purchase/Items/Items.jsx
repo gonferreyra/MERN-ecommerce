@@ -21,7 +21,7 @@ const Items = ({ item }) => {
     <ItemsContainer>
       <Item>
         <ImgContainer>
-          <Image src={require("../../../img/" + item.item.imgUrl + ".png")} />
+          <Image src={item.item.imgUrl} />
         </ImgContainer>
         <TextContainer>
           <Name>{item.item.name}</Name>
