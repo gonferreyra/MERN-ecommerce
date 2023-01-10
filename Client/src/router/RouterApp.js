@@ -20,7 +20,8 @@ import { auth } from "../firebase/firebase-config";
 import { getProducts } from "../redux/Products/products-actions";
 import AdminRoute from "../utils/AdminRoute";
 import Admin from "../components/Admin/Admin";
-import Item from "../components/Admin/Item/Item";
+import EditItem from "../components/Admin/EditItem/EditItem";
+import AddItem from "../components/Admin/AddItem/AddItem";
 
 const RouterApp = () => {
   const { isOpen, toggle } = useContext(UserContext);
@@ -69,7 +70,8 @@ const RouterApp = () => {
       <Routes>
         <Route path="*" element={<Home />} />
         <Route path="/product/:id" element={<SneakerItem />} />
-        <Route path="/admin/:id" element={<Item />} />
+        <Route path="/admin/:id" element={<EditItem />} />
+        <Route path="/admin/add" element={<AddItem />} />
         <Route
           path="/register"
           element={uid ? <Navigate to="/" /> : <Register />}
