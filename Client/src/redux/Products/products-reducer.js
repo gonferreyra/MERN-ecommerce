@@ -37,10 +37,16 @@ const productReducer = (state = initialState, action) => {
         ...state,
         currentItem: null,
         products: state.products.map((product) =>
-          // Me reemplaza todo y pierdo los datos que no ingreso como imgUrl... ver como hacer para que reemplace solo los modificados
           product._id === action.payload._id
             ? (product = action.payload)
             : product
+        ),
+      };
+    case types.PRODUCT_DELETE_SUCCESSFULLY:
+      return {
+        ...state,
+        products: state.products.filter(
+          (product) => product._id !== action.payload
         ),
       };
     default:
