@@ -105,11 +105,13 @@ const Navbar = ({ toggle }) => {
                 Services
               </NavLinks>
             </NavItem>
-            <NavItem>
-              <NavLinks to="/login" smooth={true}>
-                Login
-              </NavLinks>
-            </NavItem>
+            {!auth.uid && (
+              <NavItem>
+                <NavLinks to="/login" smooth={true}>
+                  Login
+                </NavLinks>
+              </NavItem>
+            )}
           </NavMenu>
           <NavBtn>
             {auth.uid && (
