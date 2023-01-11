@@ -61,6 +61,11 @@ export const addProduct = (newProduct) => {
       await fetchWithToken("products", newProduct, "POST");
       dispatch(productAdd());
       dispatch(getProducts());
+      Swal.fire({
+        icon: "success",
+        title: "Product added successfully",
+        timer: 2000,
+      });
     } catch (error) {
       console.log(error);
     }

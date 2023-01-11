@@ -44,9 +44,10 @@ const EditItem = () => {
     navigate("/admin");
   };
 
-  const handleDelete = () => {
+  const handleDelete = (e) => {
+    // Uso el preventDefault ya que es lo que hace funcionar el navigate
+    e.preventDefault();
     dispatch(deleteProduct(item));
-    // Ver porque no funciona el navigate
     navigate("/admin");
   };
 

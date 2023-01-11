@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { useForm } from "../../../hooks/useForm";
 import { addProduct } from "../../../redux/Products/products-actions";
 import {
@@ -37,8 +38,15 @@ const AddItem = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addProduct(newProduct));
-    navigate("/admin");
+    if ((name, category, price, info, stock, imgUrl)) {
+      dispatch(addProduct(newProduct));
+      navigate("/admin");
+    } else {
+      Swal.fire({
+        icon: "error",
+        text: "All fields must be completed. Please try again",
+      });
+    }
   };
 
   return (
