@@ -8,6 +8,7 @@ import routesAuth from "./routes/auth.routes.js";
 import routesProducts from "./routes/product.routes.js";
 import routesSearch from "./routes/search.routes.js";
 import routesUsers from "./routes/users.routes.js";
+import routesOrders from "./routes/orders.routes.js";
 import dbConection from "./database/config.js";
 
 // Create Server
@@ -32,6 +33,7 @@ app.use("/api/auth", routesAuth);
 app.use("/api/products", routesProducts);
 app.use("/api/search", routesSearch);
 app.use("/api/users", routesUsers);
+app.use("/api/orders", routesOrders);
 
 // Petitions
 app.listen(process.env.PORT, () => {
