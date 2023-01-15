@@ -22,6 +22,7 @@ import AdminRoute from "../utils/AdminRoute";
 import Admin from "../components/Admin/Admin";
 import EditItem from "../components/Admin/EditItem/EditItem";
 import AddItem from "../components/Admin/AddItem/AddItem";
+import CheckOut from "../components/Checkout/CheckOut";
 
 const RouterApp = () => {
   const { isOpen, toggle } = useContext(UserContext);
@@ -83,6 +84,7 @@ const RouterApp = () => {
         <Route element={<AdminRoute />}>
           <Route path="/admin" element={<Admin />} />
         </Route>
+        <Route path="/checkout" element={<CheckOut />} />
       </Routes>
       <Footer />
     </BrowserRouter>
