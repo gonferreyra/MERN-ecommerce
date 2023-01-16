@@ -8,6 +8,7 @@ export const getAllOrders = async (req = request, res = resolve) => {
   try {
     const orderList = await Order.find()
       .populate("user", "name")
+      .populate({ path: "orderItems", populate: "product" })
       .sort({ dateOrdered: -1 });
 
     if (!orderList) {
@@ -79,7 +80,7 @@ export const createNewOrder = async (req = request, res = resolve) => {
       return newOrderItem._id;
     })
   );
-  // We need to resolve the proise that are pending
+  // We need to resolve the promises that are pending
   const orderItemsIdsResolve = await orderItemsId;
 
   const totalPrices = await Promise.all(

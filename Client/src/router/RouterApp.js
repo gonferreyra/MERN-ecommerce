@@ -23,6 +23,8 @@ import Admin from "../components/Admin/Admin";
 import EditItem from "../components/Admin/EditItem/EditItem";
 import AddItem from "../components/Admin/AddItem/AddItem";
 import CheckOut from "../components/Checkout/CheckOut";
+import { getOrders } from "../redux/Orders/orders-actions";
+import UserMenu from "../components/UserMenu/UserMenu";
 
 const RouterApp = () => {
   const { isOpen, toggle } = useContext(UserContext);
@@ -40,6 +42,7 @@ const RouterApp = () => {
   useEffect(() => {
     dispatch(startChecking());
     dispatch(getProducts());
+    dispatch(getOrders());
   }, [dispatch]);
 
   // Keep state of user authenticated on reload. user? check if user has something, then look for user.uid
@@ -79,12 +82,12 @@ const RouterApp = () => {
         />
         <Route path="/login" element={uid ? <Navigate to="/" /> : <Login />} />
         <Route element={<PrivateRoute />}>
-          <Route path="/exit" element={<Purchase />} />
+          <Route path="/checkout" element={<CheckOut />} />
         </Route>
         <Route element={<AdminRoute />}>
           <Route path="/admin" element={<Admin />} />
         </Route>
-        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/usermenu" element={<UserMenu />} />
       </Routes>
       <Footer />
     </BrowserRouter>
