@@ -14,15 +14,20 @@ export const HeaderH1 = styled.h1`
   padding: 1rem;
 `;
 export const CheckOutContent = styled.div`
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+`;
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
-export const FormData = styled.form`
+export const FormData = styled.div`
   padding: 1rem;
   margin: 1rem;
   border-radius: 5px;
-  display: inline-block;
+  /* display: inline-block; */
   background-color: #fff;
   max-width: 400px;
 

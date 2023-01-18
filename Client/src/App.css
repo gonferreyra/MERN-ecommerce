@@ -6,3 +6,47 @@
   box-sizing: border-box;
   font-family: "Gemunu Libre", sans-serif;
 }
+
+table.blueTable {
+  border: 1px solid #1c6ea4;
+  background-color: #fff;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 1rem auto;
+}
+table.blueTable td,
+table.blueTable th {
+  border: 1px solid #aaaaaa;
+  padding: 15px 2px;
+}
+table.blueTable tbody td {
+  font-size: 14px;
+}
+/* table.blueTable tr:nth-child(even) {
+} */
+table.blueTable thead {
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  border-left: 2px solid #d0e4f5;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+
+table.blueTable tfoot td {
+  font-size: 14px;
+}
+table.blueTable tfoot .links {
+  text-align: right;
+}
+table.blueTable tfoot .links a {
+  display: inline-block;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 5px;
+}

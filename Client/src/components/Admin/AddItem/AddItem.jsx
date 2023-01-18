@@ -36,10 +36,10 @@ const AddItem = () => {
 
   const newProduct = { name, category, price, info, stock, imgUrl };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if ((name, category, price, info, stock, imgUrl)) {
-      dispatch(addProduct(newProduct));
+      await dispatch(addProduct(newProduct));
       navigate("/admin");
     } else {
       Swal.fire({

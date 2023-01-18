@@ -8,6 +8,8 @@ import {
   CartContainer,
   AdminMenu,
   AdminMenuBtn,
+  UserMenu,
+  UserMenuBtn,
   CartTitle,
   CartTotal,
   TotalPrice,
@@ -26,6 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CartContent from "./CartContent/CartContent";
 import { startGoogleLogout, startLogout } from "../../redux/Auth/auth-actions";
 import UserImg from "../../img/blankuser.png";
+import { GiPaperTray } from "react-icons/gi";
 
 const Cart = ({ googleLogin }) => {
   const { cartIsOpen, toggleCart } = useContext(UserContext);
@@ -76,6 +79,14 @@ const Cart = ({ googleLogin }) => {
             </AdminMenuBtn>
           </AdminMenu>
         )}
+        {auth?.role === "USER_ROLE" && (
+          <UserMenu>
+            <UserMenuBtn to="/usermenu" onClick={toggleCart}>
+              <GiPaperTray />
+              Previus Orders
+            </UserMenuBtn>
+          </UserMenu>
+        )}
 
         <IoIosClose
           style={{
@@ -100,7 +111,7 @@ const Cart = ({ googleLogin }) => {
               <TotalPrice>$ {totalPrice}</TotalPrice>
             </CartTotal>
             {auth?.uid && (
-              <BtnBuy to="/exit" onClick={toggleCart}>
+              <BtnBuy to="/checkout" onClick={toggleCart}>
                 Buy
               </BtnBuy>
             )}

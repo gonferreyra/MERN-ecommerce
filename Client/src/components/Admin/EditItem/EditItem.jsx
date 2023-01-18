@@ -44,10 +44,10 @@ const EditItem = () => {
     navigate("/admin");
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     // Uso el preventDefault ya que es lo que hace funcionar el navigate
     e.preventDefault();
-    dispatch(deleteProduct(item));
+    await dispatch(deleteProduct(item));
     navigate("/admin");
   };
 

@@ -18,15 +18,19 @@ import {
   NavCartMobileBtn,
   NavCartMobileBtnImg,
   CartItemsMobile,
+  NavBtnLogout,
+  NavLogoutBtnMobileContainer,
 } from "./NavbarStyle";
 import { HiMenu } from "react-icons/hi";
 import cartImg from "../../img/carrito.png";
 import { animateScroll as scroll } from "react-scroll";
 import { UserContext } from "../Context/UserContext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UserImg from "../../img/blankuser.png";
+import { AiOutlineLogout } from "react-icons/ai";
+import { startLogout } from "../../redux/Auth/auth-actions";
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({ toggle, googleLogin }) => {
   // Scroll to top function, react-scroll
   const toggleHome = () => {
     scroll.scrollToTop();
@@ -59,6 +63,12 @@ const Navbar = ({ toggle }) => {
     window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
   };
 
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(startLogout());
+  };
+
   return (
     <>
       <Nav>
@@ -66,14 +76,27 @@ const Navbar = ({ toggle }) => {
           <NavLogo to="/" onClick={toggleHome}>
             Nike
           </NavLogo>
-          <NavCartMobile>
-            <NavCartMobileBtn>
-              <NavCartMobileBtnImg src={cartImg} onClick={toggleCart} />
-              <CartItemsMobile cartCount={cartCount}>
-                {cartCount}
-              </CartItemsMobile>
-            </NavCartMobileBtn>
-          </NavCartMobile>
+          {auth.role === "ADMIN_ROLE" ? (
+            <NavLogoutBtnMobileContainer>
+              <NavBtnLogout onClick={handleLogout}>
+                <AiOutlineLogout
+                  style={{
+                    color: "white",
+                  }}
+                  size="20px"
+                />
+              </NavBtnLogout>
+            </NavLogoutBtnMobileContainer>
+          ) : (
+            <NavCartMobile>
+              <NavCartMobileBtn>
+                <NavCartMobileBtnImg src={cartImg} onClick={toggleCart} />
+                <CartItemsMobile cartCount={cartCount}>
+                  {cartCount}
+                </CartItemsMobile>
+              </NavCartMobileBtn>
+            </NavCartMobile>
+          )}
           <ToggleIcon>
             <HiMenu onClick={toggle} />
           </ToggleIcon>
@@ -83,6 +106,9 @@ const Navbar = ({ toggle }) => {
                 to="/#hero"
                 smooth={true}
                 scroll={(el) => scrollWithOffset(el, -80)}
+                style={{
+                  paddingLeft: "0",
+                }}
               >
                 Home
               </NavLinks>
@@ -112,6 +138,33 @@ const Navbar = ({ toggle }) => {
                 </NavLinks>
               </NavItem>
             )}
+            {auth.role === "ADMIN_ROLE" ? (
+              <NavItem>
+                <NavLinks
+                  to="/admin"
+                  smooth={true}
+                  style={{
+                    color: "orange",
+                  }}
+                >
+                  Admin Menu
+                </NavLinks>
+              </NavItem>
+            ) : (
+              auth.role === "USER_ROLE" && (
+                <NavItem>
+                  <NavLinks
+                    to="/usermenu"
+                    smooth={true}
+                    style={{
+                      color: "orange",
+                    }}
+                  >
+                    User Menu
+                  </NavLinks>
+                </NavItem>
+              )
+            )}
           </NavMenu>
           <NavBtn>
             {auth.uid && (
@@ -128,10 +181,26 @@ const Navbar = ({ toggle }) => {
                 )}
               </UserInfo>
             )}
-            <NavBtnLink>
-              <NavCartBtn src={cartImg} onClick={toggleCart} />
-              <CartItems cartCount={cartCount}>{cartCount}</CartItems>
-            </NavBtnLink>
+            {auth.role === "ADMIN_ROLE" ? (
+              <NavBtnLogout
+                style={{
+                  marginRight: "24px",
+                }}
+                onClick={handleLogout}
+              >
+                <AiOutlineLogout
+                  style={{
+                    color: "white",
+                  }}
+                  size="20px"
+                />
+              </NavBtnLogout>
+            ) : (
+              <NavBtnLink>
+                <NavCartBtn src={cartImg} onClick={toggleCart} />
+                <CartItems cartCount={cartCount}>{cartCount}</CartItems>
+              </NavBtnLink>
+            )}
           </NavBtn>
         </NavbarContainer>
       </Nav>

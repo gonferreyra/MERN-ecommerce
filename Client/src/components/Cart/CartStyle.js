@@ -45,6 +45,28 @@ export const AdminMenuBtn = styled(Link)`
   gap: 5px;
 `;
 
+export const UserMenu = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+`;
+
+export const UserMenuBtn = styled(Link)`
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  background-color: red;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+
 export const CartTitle = styled.h2`
   text-align: center;
   font-size: 1.5rem;
