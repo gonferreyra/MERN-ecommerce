@@ -61,6 +61,17 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cart: [],
       };
+
+    case types.NEW_ORDER:
+      return {
+        ...state,
+        orders: [...state.orders, action.payload],
+      };
+    case types.GET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+      };
     default:
       return state;
   }
