@@ -13,7 +13,6 @@ import Register from "../components/Login/Register/Register";
 import { useDispatch, useSelector } from "react-redux";
 import { loginGoogle, startChecking } from "../redux/Auth/auth-actions";
 import Spinner from "../components/Spinner/Spinner";
-import Purchase from "../components/Purchase/Purchase";
 import PrivateRoute from "../utils/PrivateRoute";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase-config";
@@ -23,8 +22,9 @@ import Admin from "../components/Admin/Admin";
 import EditItem from "../components/Admin/EditItem/EditItem";
 import AddItem from "../components/Admin/AddItem/AddItem";
 import CheckOut from "../components/Checkout/CheckOut";
-import { getOrders } from "../redux/Orders/orders-actions";
+import { getOrders } from "../redux/Shopping/shopping-actions.js";
 import UserMenu from "../components/UserMenu/UserMenu";
+import UserMenuProtectedRoute from "../utils/UserMenuProtectedRoute";
 
 const RouterApp = () => {
   const { isOpen, toggle } = useContext(UserContext);
@@ -69,7 +69,7 @@ const RouterApp = () => {
     <BrowserRouter>
       <ScrollToTop />
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar isOpen={isOpen} toggle={toggle} />
+      <Navbar isOpen={isOpen} toggle={toggle} googleLogin={googleLogin} />
       <Cart googleLogin={googleLogin} />
       <Routes>
         <Route path="*" element={<Home />} />
@@ -87,7 +87,9 @@ const RouterApp = () => {
         <Route element={<AdminRoute />}>
           <Route path="/admin" element={<Admin />} />
         </Route>
-        <Route path="/usermenu" element={<UserMenu />} />
+        <Route element={<UserMenuProtectedRoute />}>
+          <Route path="/usermenu" element={<UserMenu />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
