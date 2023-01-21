@@ -66,6 +66,7 @@ const shopReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         orders: [...state.orders, action.payload],
+        // orders: action.payload,
       };
     case types.GET_ORDERS:
       return {

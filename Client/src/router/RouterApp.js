@@ -69,7 +69,7 @@ const RouterApp = () => {
     <BrowserRouter>
       <ScrollToTop />
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar isOpen={isOpen} toggle={toggle} googleLogin={googleLogin} />
+      <Navbar isOpen={isOpen} toggle={toggle} />
       <Cart googleLogin={googleLogin} />
       <Routes>
         <Route path="*" element={<Home />} />
