@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { NavHashLink } from "react-router-hash-link";
+import { HashLink } from "react-router-hash-link";
 
 export const Nav = styled.nav`
   /* background: #000; */
@@ -53,8 +53,8 @@ export const NavLogo = styled(Link)`
 
 export const NavCartMobile = styled.div`
   position: absolute;
-  top: calc(40px - 17.93px);
-  left: calc(50% - 25px);
+  top: calc(40px - 15px);
+  left: calc(50% - 15px);
 
   @media screen and (min-width: 769px) {
     display: none;
@@ -77,8 +77,8 @@ export const CartItemsMobile = styled.div`
   margin: auto;
   color: white;
   position: absolute;
-  bottom: -10px;
-  right: 0px;
+  bottom: -7px;
+  right: -7px;
   // if cart has no item, don't show the zero
   opacity: ${({ cartCount }) => (cartCount === 0 ? "0" : "1")};
 `;
@@ -117,7 +117,7 @@ export const NavItem = styled.li`
 `;
 
 // ver Links react scroll
-export const NavLinks = styled(NavHashLink)`
+export const NavLinks = styled(HashLink)`
   color: #fff;
   display: flex;
   align-items: center;
@@ -149,7 +149,7 @@ export const NavBtn = styled.nav`
 
 export const NavBtnLink = styled(Link)`
   border-radius: 50px;
-  padding: 10px 22px;
+  padding: 13px 22px 6px;
   color: #010606;
   font-size: 1rem;
   outline: none;
@@ -181,8 +181,8 @@ export const CartItems = styled.div`
   margin: auto;
   color: white;
   position: absolute;
-  bottom: 0;
-  right: 25px;
+  bottom: -1px;
+  right: 13px;
   opacity: ${({ cartCount }) => (cartCount === 0 ? "0" : "1")};
 `;
 

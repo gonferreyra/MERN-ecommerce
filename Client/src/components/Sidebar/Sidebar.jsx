@@ -54,13 +54,25 @@ const Sidebar = ({ isOpen, toggle }) => {
           >
             Services
           </SidebarLink>
-          <SidebarLink
-            to="/#footer"
-            onClick={toggle}
-            scroll={(el) => scrollWithOffset(el, -40)}
-          >
-            About
-          </SidebarLink>
+          {auth.role === "ADMIN_ROLE" ? (
+            <SidebarLink
+              to="/admin"
+              onClick={toggle}
+              scroll={(el) => scrollWithOffset(el, -40)}
+            >
+              Admin Menu
+            </SidebarLink>
+          ) : (
+            auth.role === "USER_ROLE" && (
+              <SidebarLink
+                to="/usermenu"
+                onClick={toggle}
+                scroll={(el) => scrollWithOffset(el, -40)}
+              >
+                User Menu
+              </SidebarLink>
+            )
+          )}
         </SidebarMenu>
         <SideBtnWrap>
           {auth.uid && (

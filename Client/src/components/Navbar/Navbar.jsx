@@ -29,8 +29,9 @@ import { useDispatch, useSelector } from "react-redux";
 import UserImg from "../../img/blankuser.png";
 import { AiOutlineLogout } from "react-icons/ai";
 import { startLogout } from "../../redux/Auth/auth-actions";
+import { FiShoppingCart } from "react-icons/fi";
 
-const Navbar = ({ toggle, googleLogin }) => {
+const Navbar = ({ toggle }) => {
   // Scroll to top function, react-scroll
   const toggleHome = () => {
     scroll.scrollToTop();
@@ -40,7 +41,6 @@ const Navbar = ({ toggle, googleLogin }) => {
 
   // connect state from store to component
   const cartState = useSelector((state) => state.shop.cart);
-  // console.log(cartState);
   const auth = useSelector((state) => state.auth);
 
   // number above cart
@@ -90,7 +90,14 @@ const Navbar = ({ toggle, googleLogin }) => {
           ) : (
             <NavCartMobile>
               <NavCartMobileBtn>
-                <NavCartMobileBtnImg src={cartImg} onClick={toggleCart} />
+                {/* <NavCartMobileBtnImg src={cartImg} onClick={toggleCart} /> */}
+                <FiShoppingCart
+                  style={{
+                    color: "white",
+                  }}
+                  size="30px"
+                  onClick={toggleCart}
+                />
                 <CartItemsMobile cartCount={cartCount}>
                   {cartCount}
                 </CartItemsMobile>
@@ -197,7 +204,14 @@ const Navbar = ({ toggle, googleLogin }) => {
               </NavBtnLogout>
             ) : (
               <NavBtnLink>
-                <NavCartBtn src={cartImg} onClick={toggleCart} />
+                {/* <NavCartBtn src={cartImg} onClick={toggleCart} /> */}
+                <FiShoppingCart
+                  style={{
+                    color: "white",
+                  }}
+                  size="30px"
+                  onClick={toggleCart}
+                />
                 <CartItems cartCount={cartCount}>{cartCount}</CartItems>
               </NavBtnLink>
             )}
