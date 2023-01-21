@@ -7,7 +7,6 @@ import {
   BtnContainer,
   NewItemBtn,
   OrdersBtn,
-  UsersBtn,
   ItemsContainer,
 } from "./AdminStyle.js";
 import { useState } from "react";
@@ -15,8 +14,9 @@ import { useState } from "react";
 
 const Admin = () => {
   const products = useSelector((state) => state.products.products);
-  const ordersState = useSelector((state) => state.orders.orders);
+  const ordersState = useSelector((state) => state.shop.orders);
   const [orders, setOrders] = useState(false);
+  // console.log(ordersState);
 
   return (
     <AdminContainer>
@@ -31,14 +31,6 @@ const Admin = () => {
         >
           {orders ? "GO BACK" : "VIEW ORDERS"}
         </OrdersBtn>
-        {/* <UsersBtn
-          onClick={() => {
-            setUsers(!users);
-            setOrders(false);
-          }}
-        >
-          VIEW USERS
-        </UsersBtn> */}
       </BtnContainer>
       {!orders ? (
         <ItemsContainer>
@@ -64,12 +56,7 @@ const Admin = () => {
                   <tr key={order._id}>
                     <td>
                       {order.orderItems.map((item) => (
-                        <p
-                          style={{
-                            margin: "5px 0",
-                          }}
-                          key={item._id}
-                        >
+                        <p style={{ margin: "5px 0" }} key={item._id}>
                           - {item.product.name}
                         </p>
                       ))}

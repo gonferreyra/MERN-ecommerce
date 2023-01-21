@@ -20,15 +20,7 @@ const Hero = () => {
             objectFit: "cover",
           }}
         />
-        {/* <HeroBackgroundVideo autoPlay loop muted src={Video} type="video/mp4" /> */}
       </HeroBackground>
-      {/* <HeroContent>
-        <HeroContentH1>Nike Store</HeroContentH1>
-        <HeroContentP>Get the latest shoes</HeroContentP>
-        <HeroContentBtn>
-          <HeroButton to="/login">Login</HeroButton>
-        </HeroContentBtn>
-      </HeroContent> */}
     </HeroContainer>
   );
 };

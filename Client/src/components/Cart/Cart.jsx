@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import { IoIosClose } from "react-icons/io";
-// import { BsTrash } from "react-icons/bs";
 import { GrUserAdmin } from "react-icons/gr";
 
 import {

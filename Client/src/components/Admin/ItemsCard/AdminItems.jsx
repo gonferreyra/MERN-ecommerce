@@ -10,8 +10,6 @@ import {
   CardBtn,
   Btn,
 } from "./AdminItemsStyle";
-// import { BsFillCartCheckFill } from "react-icons/bs";
-// import { BsInfoCircle } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import { loadCurrentItem } from "../../../redux/Products/products-actions";
 import { useDispatch } from "react-redux";

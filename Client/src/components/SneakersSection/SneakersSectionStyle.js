@@ -5,33 +5,32 @@ export const SneakerSection = styled.div`
   // ojo cuando cargue todas las zapatillas que no quede chico el height. VER!!!
   /* height: 500px; */
   margin: auto;
-  padding: 0 1rem;
+  padding: 80px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: ${({ cartIsOpen }) => (cartIsOpen ? '0.7' : '1')};
+  opacity: ${({ cartIsOpen }) => (cartIsOpen ? "0.7" : "1")};
   transition: 0.3s ease-in-out;
 
   @media screen and (min-width: 1024px) {
-        min-height: 100vh;
+    min-height: calc(100vh - 80px);
   }
-`
+`;
 
-export const Section = styled.div`
-
-`
+export const Section = styled.div``;
 
 export const SearchBar = styled.form`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 0.8rem;
-  margin: 0.5rem auto;
-`
+  margin: 0 auto;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
+  flex-wrap: wrap;
+`;
 
-export const SearchText = styled.h2`
-
-`
+export const SearchText = styled.h2``;
 
 export const SearchInput = styled.input`
   width: 200px;
@@ -45,7 +44,7 @@ export const SearchInput = styled.input`
   &:focus {
     outline: 1px solid blue;
   }
-`
+`;
 
 export const SearchBtn = styled.button`
   width: 120px;
@@ -61,7 +60,7 @@ export const SearchBtn = styled.button`
     transition: all 0.4s ease-in-out;
     scale: 1.2;
   }
-`
+`;
 
 export const SearchError = styled.div`
   padding: 1rem 1.5rem;
@@ -70,25 +69,26 @@ export const SearchError = styled.div`
   border-radius: 5px;
   color: white;
   font-size: 1.2rem;
-  margin-bottom: 1rem;
-`
+  margin: 1rem auto;
+`;
 
-export const SearchErrorP = styled.p``
+export const SearchErrorP = styled.p``;
 
 export const SneakerContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  min-height: 610px;
+  min-height: 630px;
+  /* min-height: 1563px; */
 
   @media screen and (max-width: 650px) {
     justify-content: center;
   }
-`
+`;
 
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-`
+`;
 
 export const ShowMoreBtn = styled.button`
   width: 120px;
@@ -105,4 +105,4 @@ export const ShowMoreBtn = styled.button`
     transition: all 0.4s ease-in-out;
     scale: 1.2;
   }
-`
+`;

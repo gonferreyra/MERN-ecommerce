@@ -9,15 +9,17 @@ export const CheckOutContainer = styled.div`
   margin: auto;
   /* background-color: #6e85b7; */
 `;
-export const CheckOutHeader = styled.div``;
-export const HeaderH1 = styled.h1`
+export const CheckOutHeader = styled.div`
   padding: 1rem;
 `;
-export const CheckOutContent = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
+export const HeaderH1 = styled.h1`
+  padding: 1rem;
+  color: #fff;
+  background: #101522;
+  border-radius: 5px;
+  text-align: center;
 `;
+export const CheckOutContent = styled.div``;
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -27,7 +29,6 @@ export const FormData = styled.div`
   padding: 1rem;
   margin: 1rem;
   border-radius: 5px;
-  /* display: inline-block; */
   background-color: #fff;
   max-width: 400px;
 
@@ -39,7 +40,7 @@ export const FormData = styled.div`
 export const FormDataHeader = styled.div``;
 export const DataH2 = styled.h2`
   margin-bottom: 1rem;
-  background-color: #6e85b7;
+  background-color: #101522;
   color: white;
   padding: 1rem;
   border-radius: 5px;

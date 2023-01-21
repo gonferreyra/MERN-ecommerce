@@ -34,7 +34,6 @@ const EditItem = () => {
   const [info, setInfo] = useState(item.info);
   const [stock, setStock] = useState(item.stock);
   const [imgUrl, setImgUrl] = useState(item.imgUrl);
-  // console.log(name, category, price, info);
 
   const updatedProduct = { _id, name, category, price, stock, imgUrl, info };
 

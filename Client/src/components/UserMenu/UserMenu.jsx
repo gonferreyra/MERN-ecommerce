@@ -4,7 +4,6 @@ import {
   UserContainer,
   UserH1,
   BtnContainer,
-  OrdersBtn,
   BackBtn,
 } from "./UserMenuStyle.js";
 
@@ -12,10 +11,8 @@ const UserMenu = () => {
   const orders = useSelector((state) => state.shop.orders);
   const authState = useSelector((state) => state.auth);
   const { uid } = authState;
-  console.log(uid);
 
   const userOrders = orders.filter((order) => order.user._id === uid);
-  //   console.log(userOrders);
 
   return (
     <UserContainer>
@@ -46,6 +43,7 @@ const UserMenu = () => {
                           style={{
                             margin: "5px 0",
                           }}
+                          key={item._id}
                         >
                           - {item.product.name}
                         </p>

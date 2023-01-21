@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { NavHashLink } from "react-router-hash-link";
+import { HashLink } from "react-router-hash-link";
 
 export const ItemContainer = styled.div`
   background-color: #f6f6f6;
@@ -89,7 +89,7 @@ export const BackBtnContainer = styled.div`
   justify-self: center;
 `;
 
-export const BackBtn = styled(NavHashLink)`
+export const BackBtn = styled(HashLink)`
   width: 220px;
   height: 45px;
   font-size: 1rem;

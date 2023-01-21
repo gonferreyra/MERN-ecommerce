@@ -13,7 +13,6 @@ import {
   IconBtn,
 } from "./SneakerCardStyle";
 import { BsFillCartCheckFill } from "react-icons/bs";
-// import { BiDetail } from "react-icons/bi";
 import { BsInfoCircle } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import {
@@ -22,7 +21,6 @@ import {
 } from "../../../redux/Shopping/shopping-actions";
 
 const SneakerCard = ({ sneaker }) => {
-  // useDispatch, bring a dispatch from store, import addToCart from actions and pass it along dispatch to onclick function
   const dispatch = useDispatch();
 
   return (
@@ -49,7 +47,6 @@ const SneakerCard = ({ sneaker }) => {
           >
             <IconBtn>
               <BsInfoCircle size={20} />
-              {/* <BiDetail size={20} /> */}
             </IconBtn>
           </CardIcons>
         </CardHoverContainer>

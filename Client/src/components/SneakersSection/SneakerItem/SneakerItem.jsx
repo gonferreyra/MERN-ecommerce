@@ -21,9 +21,7 @@ import {
 } from "./SneakerItemStyle";
 
 const SneakerItem = () => {
-  // we bring from STORE currentItem, that already has stored the full item that we selected on sneakercard component
   const item = useSelector((state) => state.shop.currentItem);
-  // console.log(item);
 
   const { cartIsOpen } = useContext(UserContext);
 

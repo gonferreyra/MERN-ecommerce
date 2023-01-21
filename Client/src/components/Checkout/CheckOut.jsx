@@ -35,21 +35,19 @@ import { emptyCart } from "../../redux/Shopping/shopping-actions.js";
 
 const CheckOut = () => {
   const cartState = useSelector((state) => state.shop.cart);
-  // console.log(cartState);
   const authState = useSelector((state) => state.auth);
-  // const { uid } = authState;
   const user = authState.uid;
-  // console.log(user);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [total, setTotal] = useState(0);
   const [orderInfo, setOrderInfo] = useState({
-    phone: "1",
-    shippingAddress: "test",
-    city: "cordoba",
-    zipCode: "5000",
-    country: "argentina",
+    phone: "",
+    shippingAddress: "",
+    city: "",
+    zipCode: "",
+    country: "",
   });
   const { phone, shippingAddress, city, zipCode, country } = orderInfo;
 
@@ -76,7 +74,6 @@ const CheckOut = () => {
       product: item.item._id,
     };
   });
-  // console.log(orderItems);
 
   const newOrder = {
     orderItems,
@@ -87,15 +84,14 @@ const CheckOut = () => {
     country,
     phone,
   };
-  // console.log(newOrder);
 
   const handleNewOrder = async (e) => {
     e.preventDefault();
-    // console.log("form test");
 
     if ((orderItems, user, shippingAddress, city, zipCode, country, phone)) {
       await dispatch(addNewOrder(newOrder));
       await dispatch(emptyCart());
+      await dispatch(getOrders());
       navigate("/");
     } else {
       Swal.fire({
@@ -109,7 +105,7 @@ const CheckOut = () => {
     <CheckoutSection>
       <CheckOutContainer>
         <CheckOutHeader>
-          <HeaderH1>Secure Checkout - username </HeaderH1>
+          <HeaderH1>Secure Checkout - {authState.name} </HeaderH1>
         </CheckOutHeader>
         <CheckOutContent>
           <Form onSubmit={handleNewOrder}>

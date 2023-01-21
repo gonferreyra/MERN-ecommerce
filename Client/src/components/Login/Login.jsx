@@ -67,7 +67,6 @@ const Login = () => {
     if (isFormValid()) {
       dispatch(startLogin(lEmail, lPassword));
     }
-    // console.log(formLoginValues);
   };
 
   const handleGoogleLogin = () => {
