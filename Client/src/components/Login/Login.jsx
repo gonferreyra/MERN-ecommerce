@@ -43,7 +43,7 @@ const Login = () => {
   const { msgError } = useSelector((state) => state.ui);
 
   const [formLoginValues, handleInputChange] = useForm({
-    lEmail: "gonzalo@email.com",
+    lEmail: "user@email.com",
     lPassword: "123456",
   });
 

@@ -35,8 +35,8 @@ const Register = () => {
   // console.log(msgError);
 
   const [formRegisterValues, handleRegisterInputChange] = useForm({
-    rName: "Gonzalo",
-    rEmail: "gonzalo@email.com",
+    rName: "Name",
+    rEmail: "user@email.com",
     rPassword: "123456",
     rPasswordConfirm: "123456",
   });
