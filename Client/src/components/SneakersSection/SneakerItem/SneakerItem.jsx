@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  loadCurrentItem,
-  addToCart,
-} from "../../../redux/Shopping/shopping-actions";
+import { addToCart } from "../../../redux/Shopping/shopping-actions";
 import { UserContext } from "../../Context/UserContext";
 
 import {

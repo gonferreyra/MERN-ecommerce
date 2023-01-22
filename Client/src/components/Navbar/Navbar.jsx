@@ -12,17 +12,14 @@ import {
   UserInfoName,
   UserInfoImg,
   NavBtnLink,
-  NavCartBtn,
   CartItems,
   NavCartMobile,
   NavCartMobileBtn,
-  NavCartMobileBtnImg,
   CartItemsMobile,
   NavBtnLogout,
   NavLogoutBtnMobileContainer,
 } from "./NavbarStyle";
 import { HiMenu } from "react-icons/hi";
-import cartImg from "../../img/carrito.png";
 import { animateScroll as scroll } from "react-scroll";
 import { UserContext } from "../Context/UserContext";
 import { useDispatch, useSelector } from "react-redux";
