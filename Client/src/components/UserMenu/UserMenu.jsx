@@ -21,7 +21,7 @@ const UserMenu = () => {
         {/* <NewItemBtn to="/admin/add">ADD NEW SNEAKER</NewItemBtn> */}
         {/* <OrdersBtn>VIEW ORDERS</OrdersBtn> */}
       </BtnContainer>
-      {userOrders.length >= 1 && (
+      {userOrders.length >= 1 ? (
         <div className="orderContainer">
           <h2>Orders</h2>
           <table className="blueTable">
@@ -58,6 +58,11 @@ const UserMenu = () => {
             </tbody>
           </table>
         </div>
+      ) : (
+        <p>
+          You haven't made any order. You can start adding products to the cart
+          and follow the instructions on checkout.
+        </p>
       )}
       <BtnContainer>
         <BackBtn to={"/"}>Go Back</BackBtn>

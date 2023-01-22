@@ -90,7 +90,6 @@ export const startChecking = () => {
   };
 };
 
-// const checkingFinish = () => ({ type: types.checkingFinish });
 export const checkingFinish = () => ({
   type: types.checkingFinish,
 });
@@ -101,16 +100,6 @@ const loginServer = (user) => {
     payload: user,
   };
 };
-
-// export const login = (uid, displayName) => {
-//     return {
-//         type: types.login,
-//         payload: {
-//             uid,
-//             displayName,
-//         }
-//     }
-// };
 
 export const startLogout = () => {
   return (dispatch) => {
@@ -129,13 +118,8 @@ export const startGoogleLogin = () => {
     signInWithPopup(auth, provider)
       // Destructuring user from result
       .then(async ({ user }) => {
-        // console.log(user.accessToken)
+        // console.log(user);
         await dispatch(loginGoogle(user.uid, user.displayName, user.photoURL));
-        Swal.fire({
-          title: "Login successfull",
-          icon: "success",
-          timer: 2000,
-        });
       });
   };
 };
@@ -147,6 +131,7 @@ export const loginGoogle = (uid, displayName, photoURL) => {
       uid,
       displayName,
       photoURL,
+      role: "USER_ROLE",
     },
   };
 };
