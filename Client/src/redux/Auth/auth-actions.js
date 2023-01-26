@@ -3,7 +3,7 @@ import { uiFinishLoading, uiStartLoading } from "../UiReducer/ui-actions";
 import Swal from "sweetalert2";
 import { fetchWithoutToken, fetchWithToken } from "../../helpers/fetch";
 import { auth, provider } from "../../firebase/firebase-config";
-import { signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
 export const startLogin = (email, password) => {
   return async (dispatch) => {
@@ -81,6 +81,7 @@ export const startChecking = () => {
           uid: data.uid,
           name: data.name,
           role: data.role,
+          img: data.img,
         })
       );
     } else {
@@ -114,24 +115,61 @@ export const logout = () => ({
 
 // Firebase Auth
 export const startGoogleLogin = () => {
-  return (dispatch) => {
-    signInWithPopup(auth, provider)
-      // Destructuring user from result
-      .then(async ({ user }) => {
-        // console.log(user);
-        await dispatch(loginGoogle(user.uid, user.displayName, user.photoURL));
+  return async (dispatch) => {
+    dispatch(uiStartLoading());
+    signInWithPopup(auth, provider).then(async (result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+
+      // Google Token
+      const accessToken = credential.idToken;
+      const idToken = { accessToken };
+      // User data
+      const user = result.user;
+      const userInfo = { user };
+
+      const resp = await fetch("http://localhost:4000/api/auth/google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idToken, userInfo }),
       });
+      // .then((resp) => resp.json());
+      // .then((data) => console.log(data));
+
+      const data = await resp.json();
+
+      if (data.ok) {
+        localStorage.setItem("token", data.token);
+
+        dispatch(
+          loginGoogle(
+            data.user._id,
+            data.user.name,
+            data.user.img,
+            data.user.role
+          )
+        );
+        Swal.fire({
+          title: "Login successfull",
+          icon: "success",
+          timer: 2000,
+        });
+        dispatch(uiFinishLoading());
+      } else {
+        Swal.fire("Error", data.msg, "error");
+        dispatch(uiFinishLoading());
+      }
+    });
   };
 };
 
-export const loginGoogle = (uid, displayName, photoURL) => {
+export const loginGoogle = (uid, name, img, role) => {
   return {
     type: types.loginGoogle,
     payload: {
       uid,
-      displayName,
-      photoURL,
-      role: "USER_ROLE",
+      name,
+      img,
+      role,
     },
   };
 };

@@ -48,17 +48,17 @@ const RouterApp = () => {
   // Keep state of user authenticated on reload. user? check if user has something, then look for user.uid
   const [googleLogin, setGoogleLogin] = useState(false);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user?.photoURL) {
-        dispatch(loginGoogle(user.uid, user.displayName, user.photoURL));
-        setGoogleLogin(true);
-      } else {
-        setGoogleLogin(false);
-      }
-      // setChecking(false)
-    });
-  }, [dispatch]);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user?.img) {
+  //       dispatch(loginGoogle(user.uid, user.name, user.img, user.role));
+  //       setGoogleLogin(true);
+  //     } else {
+  //       setGoogleLogin(false);
+  //     }
+  //     // setChecking(false)
+  //   });
+  // }, [dispatch]);
 
   // See what we can add - Spinner???
   if (checking || loading) {

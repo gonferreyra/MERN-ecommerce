@@ -5,10 +5,15 @@
 
 import { Router } from "express";
 const router = Router();
-import { loginUser, renewToken } from "../controllers/auth.controller.js";
+import {
+  googleSignIn,
+  loginUser,
+  renewToken,
+} from "../controllers/auth.controller.js";
 import { check } from "express-validator";
 import fieldsValidator from "../middlewares/fields-validator.js";
 import validateJWT from "../middlewares/validate-jwt.js";
+// import { authTokenFirebaseVerify } from "../middlewares/authTokenFirebaseVerify.js";
 
 // Endpoints
 
@@ -20,6 +25,12 @@ router.post(
     fieldsValidator,
   ],
   loginUser
+);
+
+router.post(
+  "/google",
+  [check("idToken", "Access Token is required").notEmpty(), fieldsValidator],
+  googleSignIn
 );
 
 router.get("/renew", validateJWT, renewToken);
