@@ -77,7 +77,7 @@ export const SearchErrorP = styled.p``;
 export const SneakerContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  min-height: 630px;
+  /* min-height: 630px; */
   /* min-height: 1563px; */
 
   @media screen and (max-width: 650px) {
