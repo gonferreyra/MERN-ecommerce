@@ -174,14 +174,16 @@ const Navbar = ({ toggle }) => {
             {auth.uid && (
               <UserInfo>
                 <UserInfoName>{auth.name}</UserInfoName>
-                {auth.photo ? (
+                {auth.img ? (
                   <UserInfoImg
-                    src={auth.photo}
+                    src={auth.img}
                     referrerPolicy="no-referrer"
                     alt="profilePicture"
                   />
                 ) : (
-                  <UserInfoImg src={UserImg} alt="profilePicture" />
+                  auth.img === "" && (
+                    <UserInfoImg src={UserImg} alt="profilePicture" />
+                  )
                 )}
               </UserInfo>
             )}

@@ -63,10 +63,10 @@ const Cart = ({ googleLogin }) => {
         {auth?.uid && (
           <UserInfo>
             <UserInfoName>{auth.name}</UserInfoName>
-            {auth.photo ? (
-              <UserInfoImg src={auth.photo} alt="profile" />
+            {auth.img ? (
+              <UserInfoImg src={auth.img} alt="profile" />
             ) : (
-              <UserInfoImg src={UserImg} alt="profile" />
+              auth.img === "" && <UserInfoImg src={UserImg} alt="profile" />
             )}
           </UserInfo>
         )}

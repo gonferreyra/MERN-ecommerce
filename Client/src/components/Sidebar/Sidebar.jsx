@@ -77,16 +77,18 @@ const Sidebar = ({ isOpen, toggle }) => {
         <SideBtnWrap>
           {auth.uid && (
             <UserInfo>
-              {auth.photo ? (
+              {auth.img ? (
                 <>
                   <UserInfoName>{auth.name}</UserInfoName>
-                  <UserInfoImg src={auth.photo} alt="profileImg" />
+                  <UserInfoImg src={auth.img} alt="profileImg" />
                 </>
               ) : (
-                <>
-                  <UserInfoName>{auth.name}</UserInfoName>
-                  <UserInfoImg src={UserImg} alt="profileImg" />
-                </>
+                auth.img === "" && (
+                  <>
+                    <UserInfoName>{auth.name}</UserInfoName>
+                    <UserInfoImg src={UserImg} alt="profileImg" />
+                  </>
+                )
               )}
             </UserInfo>
           )}
