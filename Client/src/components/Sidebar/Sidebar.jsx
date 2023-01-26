@@ -83,7 +83,7 @@ const Sidebar = ({ isOpen, toggle }) => {
                   <UserInfoImg src={auth.img} alt="profileImg" />
                 </>
               ) : (
-                auth.img === "" && (
+                (!auth.img || auth.img === "") && (
                   <>
                     <UserInfoName>{auth.name}</UserInfoName>
                     <UserInfoImg src={UserImg} alt="profileImg" />

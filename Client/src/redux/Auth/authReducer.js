@@ -25,7 +25,7 @@ export const authReducer = (state = initialState, action) => {
       return {
         uid: action.payload.uid,
         name: action.payload.name,
-        photo: action.payload.img,
+        img: action.payload.img,
         role: action.payload.role,
         checking: false,
       };

@@ -66,7 +66,9 @@ const Cart = ({ googleLogin }) => {
             {auth.img ? (
               <UserInfoImg src={auth.img} alt="profile" />
             ) : (
-              auth.img === "" && <UserInfoImg src={UserImg} alt="profile" />
+              (!auth.img || auth.img === "") && (
+                <UserInfoImg src={UserImg} alt="profile" />
+              )
             )}
           </UserInfo>
         )}

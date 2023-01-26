@@ -181,7 +181,7 @@ const Navbar = ({ toggle }) => {
                     alt="profilePicture"
                   />
                 ) : (
-                  auth.img === "" && (
+                  (!auth.img || auth.img === "") && (
                     <UserInfoImg src={UserImg} alt="profilePicture" />
                   )
                 )}

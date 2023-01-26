@@ -88,7 +88,15 @@ const CheckOut = () => {
   const handleNewOrder = async (e) => {
     e.preventDefault();
 
-    if ((orderItems, user, shippingAddress, city, zipCode, country, phone)) {
+    // if (orderItems, user, shippingAddress, city, zipCode, country, phone) {
+    if (
+      orderItems &
+      user &
+      (shippingAddress.length >= 6) &
+      (zipCode.length >= 4) &
+      (country.length >= 4) &
+      (phone.length >= 6)
+    ) {
       await dispatch(addNewOrder(newOrder));
       await dispatch(emptyCart());
       await dispatch(getOrders());
@@ -96,7 +104,7 @@ const CheckOut = () => {
     } else {
       Swal.fire({
         icon: "error",
-        text: "All fields must be complete. Please try again",
+        text: "All fields must be completed correctly. Please try again",
       });
     }
   };
