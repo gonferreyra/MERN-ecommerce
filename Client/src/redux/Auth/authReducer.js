@@ -27,6 +27,7 @@ export const authReducer = (state = initialState, action) => {
         name: action.payload.name,
         img: action.payload.img,
         role: action.payload.role,
+        google: action.payload.google,
         checking: false,
       };
     case types.logoutGoogle:

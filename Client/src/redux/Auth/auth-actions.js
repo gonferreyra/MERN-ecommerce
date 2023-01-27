@@ -73,6 +73,7 @@ export const startChecking = () => {
   return async (dispatch) => {
     const resp = await fetchWithToken("auth/renew");
     const data = await resp.json();
+    // console.log(data);
 
     if (data.ok) {
       localStorage.setItem("token", data.token);
@@ -82,6 +83,7 @@ export const startChecking = () => {
           name: data.name,
           role: data.role,
           img: data.img,
+          google: data.google,
         })
       );
     } else {
@@ -127,13 +129,11 @@ export const startGoogleLogin = () => {
       const user = result.user;
       const userInfo = { user };
 
-      const resp = await fetch("http://localhost:4000/api/auth/google", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken, userInfo }),
-      });
-      // .then((resp) => resp.json());
-      // .then((data) => console.log(data));
+      const resp = await fetchWithoutToken(
+        "auth/google",
+        { idToken, userInfo },
+        "POST"
+      );
 
       const data = await resp.json();
 
@@ -145,7 +145,8 @@ export const startGoogleLogin = () => {
             data.user._id,
             data.user.name,
             data.user.img,
-            data.user.role
+            data.user.role,
+            data.user.google
           )
         );
         Swal.fire({
@@ -162,7 +163,7 @@ export const startGoogleLogin = () => {
   };
 };
 
-export const loginGoogle = (uid, name, img, role) => {
+export const loginGoogle = (uid, name, img, role, google) => {
   return {
     type: types.loginGoogle,
     payload: {
@@ -170,6 +171,7 @@ export const loginGoogle = (uid, name, img, role) => {
       name,
       img,
       role,
+      google,
     },
   };
 };
