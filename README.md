@@ -6,4 +6,4 @@ To access Admin menu:
 username: admin@admin.com
 password: 123456
 
-To access as a user, just register with email and password. You can also use login with your google acount.
+To access as a user, just register with email and password. You can also login with your google acount.
