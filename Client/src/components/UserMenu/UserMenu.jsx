@@ -1,5 +1,7 @@
 import React from "react";
+import { useContext } from "react";
 import { useSelector } from "react-redux";
+import { UserContext } from "../Context/UserContext.js";
 import {
   UserContainer,
   UserH1,
@@ -8,6 +10,7 @@ import {
 } from "./UserMenuStyle.js";
 
 const UserMenu = () => {
+  const { cartIsOpen } = useContext(UserContext);
   const orders = useSelector((state) => state.shop.orders);
   const authState = useSelector((state) => state.auth);
   const { uid } = authState;
@@ -15,7 +18,7 @@ const UserMenu = () => {
   const userOrders = orders.filter((order) => order.user._id === uid);
 
   return (
-    <UserContainer>
+    <UserContainer cartIsOpen={cartIsOpen}>
       <UserH1>Welcome {authState.name}</UserH1>
       <BtnContainer>
         {/* <NewItemBtn to="/admin/add">ADD NEW SNEAKER</NewItemBtn> */}

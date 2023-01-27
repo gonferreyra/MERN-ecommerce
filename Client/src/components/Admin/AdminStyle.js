@@ -6,6 +6,7 @@ export const AdminContainer = styled.div`
   padding: 48px;
   max-width: 1100px;
   margin: auto;
+  opacity: ${({ cartIsOpen }) => (cartIsOpen ? "0.7" : "1")};
 `;
 
 export const AdminH1 = styled.h1`

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "../helpers/ScrollToTop";
 import Home from "../pages/Home";
@@ -11,11 +11,9 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import SneakerItem from "../components/SneakersSection/SneakerItem/SneakerItem";
 import Register from "../components/Login/Register/Register";
 import { useDispatch, useSelector } from "react-redux";
-import { loginGoogle, startChecking } from "../redux/Auth/auth-actions";
+import { startChecking } from "../redux/Auth/auth-actions";
 import Spinner from "../components/Spinner/Spinner";
 import PrivateRoute from "../utils/PrivateRoute";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/firebase-config";
 import { getProducts } from "../redux/Products/products-actions";
 import AdminRoute from "../utils/AdminRoute";
 import Admin from "../components/Admin/Admin";
@@ -36,8 +34,6 @@ const RouterApp = () => {
   const productsAPIState = useSelector((state) => state.products);
   const { loading } = productsAPIState;
 
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   // Keep auth state, renew token to keep login alive
   useEffect(() => {
     dispatch(startChecking());
@@ -45,22 +41,7 @@ const RouterApp = () => {
     dispatch(getOrders());
   }, [dispatch]);
 
-  // Keep state of user authenticated on reload. user? check if user has something, then look for user.uid
-  const [googleLogin, setGoogleLogin] = useState(false);
-
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user?.img) {
-  //       dispatch(loginGoogle(user.uid, user.name, user.img, user.role));
-  //       setGoogleLogin(true);
-  //     } else {
-  //       setGoogleLogin(false);
-  //     }
-  //     // setChecking(false)
-  //   });
-  // }, [dispatch]);
-
-  // See what we can add - Spinner???
+  // Spinner
   if (checking || loading) {
     return <Spinner />;
   }
@@ -70,7 +51,7 @@ const RouterApp = () => {
       <ScrollToTop />
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar isOpen={isOpen} toggle={toggle} />
-      <Cart googleLogin={googleLogin} />
+      <Cart />
       <Routes>
         <Route path="*" element={<Home />} />
         <Route path="/product/:id" element={<SneakerItem />} />

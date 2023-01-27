@@ -29,7 +29,7 @@ import { startGoogleLogout, startLogout } from "../../redux/Auth/auth-actions";
 import UserImg from "../../img/blankuser.png";
 import { GiPaperTray } from "react-icons/gi";
 
-const Cart = ({ googleLogin }) => {
+const Cart = () => {
   const { cartIsOpen, toggleCart } = useContext(UserContext);
 
   // bring cart and auth from reducer
@@ -118,7 +118,7 @@ const Cart = ({ googleLogin }) => {
             )}
           </>
         )}
-        {googleLogin ? (
+        {auth.google ? (
           <LogOutBtn
             onClick={() => {
               handleGoogleLogout();

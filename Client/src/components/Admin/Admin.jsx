@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import AdminItems from "./ItemsCard/AdminItems.jsx";
 import {
@@ -10,16 +10,17 @@ import {
   ItemsContainer,
 } from "./AdminStyle.js";
 import { useState } from "react";
-// import "./style.css";
+import { UserContext } from "../Context/UserContext.js";
 
 const Admin = () => {
   const products = useSelector((state) => state.products.products);
   const ordersState = useSelector((state) => state.shop.orders);
   const [orders, setOrders] = useState(false);
-  // console.log(ordersState);
+
+  const { cartIsOpen } = useContext(UserContext);
 
   return (
-    <AdminContainer>
+    <AdminContainer cartIsOpen={cartIsOpen}>
       <AdminH1>ADMIN MENU</AdminH1>
       <BtnContainer>
         <NewItemBtn to="/admin/add">ADD NEW SNEAKER</NewItemBtn>
