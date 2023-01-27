@@ -89,23 +89,44 @@ const CheckOut = () => {
     e.preventDefault();
 
     // if (orderItems, user, shippingAddress, city, zipCode, country, phone) {
-    if (
-      orderItems &
-      user &
-      (shippingAddress.length >= 6) &
-      (zipCode.length >= 4) &
-      (country.length >= 4) &
-      (phone.length >= 6)
-    ) {
+    // if (
+    //   orderItems &
+    //   user &
+    //   (shippingAddress.length >= 6) &
+    //   (zipCode.length >= 4) &
+    //   (country.length >= 4) &
+    //   (phone.length >= 6)
+    // ) {
+    if (shippingAddress.length <= 4) {
+      Swal.fire({
+        icon: "error",
+        text: "You must enter at least 5 character in the field 'Address'. If the error continues, please contact administrator.",
+      });
+    } else if (city.length <= 4) {
+      Swal.fire({
+        icon: "error",
+        text: "You must enter at least 5 character in the field 'City'. If the error continues, please contact administrator.",
+      });
+    } else if (zipCode.length <= 3) {
+      Swal.fire({
+        icon: "error",
+        text: "You must enter at least 4 character in the field 'Zip Code'. If the error continues, please contact administrator.",
+      });
+    } else if (country.length <= 4) {
+      Swal.fire({
+        icon: "error",
+        text: "You must enter at least 5 character in the field 'Country'. If the error continues, please contact administrator.",
+      });
+    } else if (phone.length <= 6) {
+      Swal.fire({
+        icon: "error",
+        text: "You must enter at least 7 numbers in the field 'Phone'. If the error continues, please contact administrator.",
+      });
+    } else {
       await dispatch(addNewOrder(newOrder));
       await dispatch(emptyCart());
       await dispatch(getOrders());
       navigate("/");
-    } else {
-      Swal.fire({
-        icon: "error",
-        text: "All fields must be completed correctly. Please try again",
-      });
     }
   };
 
